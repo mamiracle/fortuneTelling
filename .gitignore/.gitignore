@@ -1,0 +1,37 @@
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var textBox: UITextView!
+    
+    //占いの内容を書く
+    let fortuneArray: [String] = ["みらくるハッピー！🐩","まあまあハッピー","可もなく負荷もなく","ちょーバッド…"]
+    let colorArray: [String] = ["ブラック","ホワイト","ピンク","グリーン","ミッドナイトブルー","アッシュグレー","オレンジ","群青色","赤"]
+    let itemArray: [String] = ["パソコン","ビール","カメラ","クックパッドというレシピサービス！！！"]
+    let phraseArray: [String] = ["「人生は むつかしく解釈するから 分からなくなる。(武者小路実篤)」","「夢中で日を過ごしておれば、いつかはわかる時が来る。（坂本龍馬）」","「成功は誕生日みたいなもの。待ちに待った誕生日がきても、自分はなにも変わらないでしょ。（オードリー・ヘップバーン）」","「常識とは十八歳までに身につけた偏見のコレクションのことをいう。（アインシュタイン）」"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+// uranaibotannwoosia
+    @IBAction func tapBotton(_ sender: Any) {
+        let fortuneNumber:Int = random(4)
+        let colorNumber:Int = random(9)
+        let itemNumber:Int = random(4)
+        let phraseNumber:Int = random(4)
+        
+        let strSentence:String = "今日の運勢は"+ fortuneArray[fortuneNumber] + "だよ！" + "ラッキーカラーは" + colorArray[colorNumber] + "、" + "ラッキーアイテムは" + itemArray[itemNumber] + "、" + "今日の名言は" + phraseArray[phraseNumber] + "😚"
+        
+        textBox.text = strSentence
+    }
+    func random(_ limit:Int) -> Int {
+        return int(arc4random() % UInt32(limit))
+    }
+}
